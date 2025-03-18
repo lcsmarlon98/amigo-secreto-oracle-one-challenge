@@ -11,6 +11,14 @@ const apresentar_messagem_erro_nome_vazio = () => {
     span_elemento.append('Por favor, insira um nome.')
 }
 
+const criar_lista_nao_ordenada_nome = () => {
+    const ul_elemento_listaAmigos = document.getElementById('listaAmigos')
+    let li_elemento_nomes = ""
+
+    lista_amigo.forEach(nome => li_elemento_nomes += `<li>${nome}</li>`)
+    ul_elemento_listaAmigos.innerHTML = li_elemento_nomes
+}
+
 const adicionarAmigo = () => {
     remover_mensagem_erro()
 
@@ -18,9 +26,15 @@ const adicionarAmigo = () => {
     const nome = input_elemento.value
 
     if (nome) {
-        lista_amigo.push(nome)
+        if (lista_amigo.filter(nome_amigo => nome_amigo.toLowerCase() === nome.toLowerCase()).length === 0) {
+            lista_amigo.push(nome)
+        } else {
+            lista_amigo.splice(lista_amigo.indexOf(nome), 1);
+        }
         input_elemento.value = ""
     } else {
         apresentar_messagem_erro_nome_vazio()
     }
+
+    criar_lista_nao_ordenada_nome()
 }
