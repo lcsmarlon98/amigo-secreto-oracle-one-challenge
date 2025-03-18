@@ -6,9 +6,9 @@ const remover_mensagem_erro = () => {
     span_elemento.innerHTML = ""
 }
 
-const apresentar_messagem_erro_nome_vazio = () => {
+const apresentar_messagem_erro_nome_vazio = (mensagem = 'Por favor, insira um nome.') => {
     const span_elemento = document.getElementById('text-error')
-    span_elemento.append('Por favor, insira um nome.')
+    span_elemento.append(mensagem)
 }
 
 const criar_lista_nao_ordenada_nome = () => {
@@ -37,4 +37,23 @@ const adicionarAmigo = () => {
     }
 
     criar_lista_nao_ordenada_nome()
+}
+
+const obter_nome_sorteado = () => {
+    let sorteadoIndex = Math.floor(Math.random() * lista_amigo.length);
+    return lista_amigo[sorteadoIndex]
+}
+
+const mostrar_resultado = nome => {
+    const ul_elemento_resultado = document.getElementById('resultado')
+    ul_elemento_resultado.innerHTML = `<li>${nome}</li>`
+}
+
+const sortearAmigo = () => {
+    if (!lista_amigo.length) {
+        apresentar_messagem_erro_nome_vazio('É necessário adicionar pelo menos um nome antes de sortear.')
+    } else {
+        mostrar_resultado(
+            obter_nome_sorteado())
+    }
 }
