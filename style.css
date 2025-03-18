@@ -160,3 +160,10 @@ ul {
 .button-draw:hover {
     background-color: var(--color-button-hover);
 }
+
+#text-error {
+    font-size: 1.5rem;
+    color: rgb(189, 29, 29);
+    font-weight: 300;
+    padding: 10px 0;
+}
