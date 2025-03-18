@@ -19,7 +19,7 @@ const adicionarAmigo = () => {
 
     if (nome) {
         lista_amigo.push(nome)
-        console.log(lista_amigo)
+        input_elemento.value = ""
     } else {
         apresentar_messagem_erro_nome_vazio()
     }
